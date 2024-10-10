@@ -8,9 +8,11 @@ This module contain many processes for creating any code.
 ## Developing
 - [ ] \_\_init__.py
   - [ ] Import processes
-- [ ] Classes.py
-  - [ ] InheritanceSkeleton class
+- [ ] Inheritance.py
+  - [ ] Skeleton class
   - [ ] DataClass class
+- [ ] Errors.py
+- [ ] Decorators.py
 - [ ] Functions.py
 - [ ] Types.py
 - [ ] Definitions.py
