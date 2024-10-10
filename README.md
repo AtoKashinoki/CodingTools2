@@ -11,6 +11,8 @@ This module contain many processes for creating any code.
 - [ ] Classes.py
   - [ ] InheritanceSkeleton class
   - [ ] DataClass class
+- [x] Errors.py
+  - [x] PreventExecution
 - [ ] Functions.py
 - [ ] Types.py
 - [ ] Definitions.py
