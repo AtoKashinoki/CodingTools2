@@ -16,5 +16,20 @@ if __name__ == '__main__':
 """ imports  """
 
 
+from abc import ABC
+
+
+""" Functions class skeleton """
+
+
+class FunctionsSkeleton(ABC):
+    """ Functions class skeleton """
+    ...
+
+
 """ ANSI functions """
 
+
+class ANSI(FunctionsSkeleton):
+    """ ANSI functions """
+    ...
