@@ -16,13 +16,13 @@ if __name__ == '__main__':
 """ imports  """
 
 
-from abc import ABC
+from .Inheritance import InheritanceSkeleton
 
 
 """ Functions class skeleton """
 
 
-class FunctionsSkeleton(ABC):
+class FunctionsSkeleton(InheritanceSkeleton):
     """ Functions class skeleton """
     ...
 
