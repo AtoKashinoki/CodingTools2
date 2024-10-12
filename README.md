@@ -13,9 +13,12 @@ This module contain many processes for creating any code.
   - [x] DataClass class
 - [x] Errors.py
   - [x] PreventExecution
+- [ ] Descriptor.py
+  - [ ] Skeleton class
 - [ ] Decorators.py
   - [ ] Skeleton class
 - [ ] Functions.py
+  - [x] Skeleton class
   - [ ] ansi functions
 - [ ] Types.py
   - [ ] Skeleton class
