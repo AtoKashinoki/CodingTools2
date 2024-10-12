@@ -19,8 +19,11 @@ This module contain many processes for creating any code.
   - [ ] ansi functions
 - [ ] Types.py
   - [ ] Skeleton class
-- [ ] Definitions.py
-  - [ ] ANSI class
+- [x] Definitions.py
+  - [x] System definitions
+  - [x] Index definitions
+  - [x] Key definitions
+  - [x] ANSI definitions
 - [ ] Commands.py
   - [ ] Initialize class
   - [ ] generate class
