@@ -9,11 +9,11 @@ This module contain many processes for creating any code.
 - [ ] \_\_init__.py
   - [ ] Import processes
 - [ ] Inheritance.py
-  - [ ] Skeleton class
-  - [ ] DataClass class
-- [ ] Errors.py
+  - [x] Skeleton class
+  - [x] DataClass class
+- [x] Errors.py
   - [x] PreventExecution
-  - [ ] Decorators.py
+- [ ] Decorators.py
 - [ ] Functions.py
 - [ ] Types.py
 - [ ] Definitions.py
