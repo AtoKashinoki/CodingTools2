@@ -28,5 +28,6 @@ This module contain many processes for creating any code.
   - [x] Key definitions
   - [x] ANSI definitions
 - [ ] Commands.py
+  - [ ] Skeleton class
   - [ ] Initialize class
   - [ ] generate class
