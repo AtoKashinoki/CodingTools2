@@ -6,6 +6,7 @@ from .Inheritance import InheritanceSkeleton
 class CommandSkeleton(InheritanceSkeleton):
     KEYS: dict[str, str]
     COMMAND_NOT_FOUND: str
+    RUN: str
     SUCCESS: str
     OVERWRITE: str
     __args: tuple[str, ...]

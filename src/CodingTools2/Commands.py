@@ -30,6 +30,7 @@ class CommandSkeleton(InheritanceSkeleton):
     # constants
     KEYS: dict[str, str]
     COMMAND_NOT_FOUND: str = "Command not found."
+    RUN: str = "Run {} command."
     SUCCESS: str = "The process finished successfully."
     OVERWRITE = (
         "Do you want to overwrite it?\n"
@@ -149,6 +150,8 @@ class Initialize(CommandSkeleton):
 
     def toml(self, _options: tuple[str, ...]) -> None:
         """ Create toml file command """
+        print(self.RUN.format("toml"))
+
         if os.path.isfile(self.pyproject):
             message = self.pyproject_exists + self.OVERWRITE
             if not input(message) == "yes":
@@ -164,6 +167,8 @@ class Initialize(CommandSkeleton):
 
     def module(self, _options: tuple[str, ...]) -> None:
         """ Create module command """
+        print(self.RUN.format("module"))
+
         self.toml(_options[1:])
 
         if len(_options) > 1:
