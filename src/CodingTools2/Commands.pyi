@@ -7,6 +7,7 @@ class CommandSkeleton(InheritanceSkeleton):
     KEYS: dict[str, str]
     COMMAND_NOT_FOUND: str
     SUCCESS: str
+    OVERWRITE: str
     __args: tuple[str, ...]
     @abstractmethod
     def commands(self, _args: tuple[str, ...]) -> None: ...
@@ -26,4 +27,5 @@ class Initialize(CommandSkeleton):
     pyproject_exists: str
     toml_text: str
     def toml(self, _options: tuple[str, ...]) -> None: ...
+    def module(self, _options: tuple[str, ...]) -> None: ...
     ...

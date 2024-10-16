@@ -31,6 +31,10 @@ class CommandSkeleton(InheritanceSkeleton):
     KEYS: dict[str, str]
     COMMAND_NOT_FOUND: str = "Command not found."
     SUCCESS: str = "The process finished successfully."
+    OVERWRITE = (
+        "Do you want to overwrite it?\n"
+        "[yes | no] -> "
+    )
 
     # instants
     __args: tuple[str, ...]
@@ -82,6 +86,7 @@ class Initialize(CommandSkeleton):
     KEYS: dict[str, str] = {
         "help": "help", "-h": "help",
         "toml": "toml",
+        "module": "module",
     }
 
     # instances
@@ -108,11 +113,7 @@ class Initialize(CommandSkeleton):
         return
 
     pyproject = "pyproject.toml"
-    pyproject_exists: str = (
-        "File already exists.\n"
-        "Do you want to overwrite it?\n"
-        "[yes | no] -> "
-    )
+    pyproject_exists: str = f"{pyproject} file already exists.\n"
     toml_text: str = (
         '[build-system]\n'
         'requires = ["setuptools>=<SETUPTOOLS VERSION>"]\n'
@@ -149,13 +150,36 @@ class Initialize(CommandSkeleton):
     def toml(self, _options: tuple[str, ...]) -> None:
         """ Create toml file command """
         if os.path.isfile(self.pyproject):
-            if not input(self.pyproject_exists) == "yes":
+            message = self.pyproject_exists + self.OVERWRITE
+            if not input(message) == "yes":
                 return
             ...
 
         with open(self.pyproject, "w") as pyproject_toml:
             pyproject_toml.write(self.toml_text)
             ...
+
+        print(self.SUCCESS)
+        return
+
+    def module(self, _options: tuple[str, ...]) -> None:
+        """ Create module command """
+        self.toml(_options[1:])
+
+        if len(_options) > 1:
+            module_name: str = _options[0]
+            ...
+        else:
+            module_name = "None"
+            ...
+
+
+        src = "./src"
+        if not os.path.isdir(src): os.mkdir(src)
+        module_path: str = f"{src}/{module_name}"
+        if not os.path.isdir(module_path): os.mkdir(module_path)
+
+        with open(f"{module_path}/__init__.py", "w"): ...
 
         print(self.SUCCESS)
         return
