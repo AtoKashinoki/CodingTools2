@@ -32,7 +32,7 @@ class DefinitionSkeleton(DataClass):
 """ System """
 
 
-class System(DataClass):
+class System(DefinitionSkeleton):
     """ System definitions """
     EXIT = 0
     ERROR = 1
@@ -63,7 +63,7 @@ class ANSIKeys(DefinitionSkeleton):
 
     """ return ansi texture key """
     @staticmethod
-    def texture(key: int): return f"{ANSIKeys.KEY}{key}m"
+    def texture(key: int) -> str: return f"{ANSIKeys.KEY}{key}m"
     ...
 
 
@@ -98,7 +98,7 @@ class ANSI(DefinitionSkeleton):
             ...
 
         """ Font color definitions """
-        class FontColor:
+        class FontColor(DefinitionSkeleton):
             """ Font color definitions """
             BLACK = ANSIKeys.texture(30)
             RED = ANSIKeys.texture(31)
@@ -112,7 +112,8 @@ class ANSI(DefinitionSkeleton):
             ...
 
         """ Background color definitions """
-        class BackgroundColor:
+        class BackgroundColor(DefinitionSkeleton):
+            """ Background color definitions """
             BLACK = ANSIKeys.texture(40)
             RED = ANSIKeys.texture(41)
             GREEN = ANSIKeys.texture(42)

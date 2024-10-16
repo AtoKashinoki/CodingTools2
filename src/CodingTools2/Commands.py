@@ -3,7 +3,6 @@
 
 This file contain command processes for developing programs.
 """
-from abc import abstractmethod
 
 """ Prevent execution this file """
 
@@ -17,6 +16,7 @@ if __name__ == '__main__':
 
 import os
 import sys
+from abc import abstractmethod
 from .Inheritance import InheritanceSkeleton
 
 
