@@ -18,6 +18,7 @@ if __name__ == '__main__':
 import os
 import sys
 from .Inheritance import InheritanceSkeleton
+from .Functions import Convert
 
 
 """ Skeleton """
@@ -158,6 +159,33 @@ class Initialize(CommandSkeleton):
             ...
 
         print(self.SUCCESS)
+        return
+
+    cwd = "./{}"
+    def pyi(self, _options: tuple[str, ...]) -> None:
+        """ Create pyi file command """
+        path: str = self.cwd.format(_options[0])
+
+        files: list = []
+        match os.path.isfile(path):
+            case True:
+                files = [path, ]
+                ...
+            case False:
+                files = [
+                    f"{path}/{_path}"
+                    for _path in os.listdir(path)
+                ]
+                ...
+
+        for file in files:
+            if not file[-3:] == ".py": continue
+
+            with open(file, "r") as py_file:
+                print(Convert.pyi_from_py(py_file.read()))
+                pass
+            ...
+
         return
 
     ...

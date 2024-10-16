@@ -34,3 +34,18 @@ class ANSI(FunctionsSkeleton):
     """ ANSI functions """
     ...
 
+
+""" Convert functions """
+
+
+class Convert(FunctionsSkeleton):
+    """ Convert functions """
+    @staticmethod
+    def pyi_from_py(_py_text: str) -> str:
+        """ Convert pyi text from py text """
+        keys = ("class ", "def ", "@", )
+
+        pass
+
+        return
+    ...
