@@ -3,7 +3,7 @@
 
 This file contain functions for developing programs.
 """
-
+from fileinput import lineno
 
 """ Prevent execution this file """
 
@@ -33,3 +33,4 @@ class FunctionsSkeleton(InheritanceSkeleton):
 class ANSI(FunctionsSkeleton):
     """ ANSI functions """
     ...
+

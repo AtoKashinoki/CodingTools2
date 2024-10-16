@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=<SETUPTOOLS VERSION>"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "<MODULE NAME>"
+version = "0.0.0"
+description = "<DESCRIPTION>"
+
+readme = "README.md"
+license = {file="LICENSE"}
+
+requires-python = ">=<PYTHON VERSION>"
+dependencies = [
+]
+
+authors = [
+   {name="<NAME>", email="<EMAIL>"}
+]
+classifiers = [
+   "Programming Language :: Python :: <PYTHON VERSION>",
+   "License :: OSI Approved :: <LICENSE>",
+   "Operating System :: Microsoft :: Windows :: <WINDOWS VERSION>"
+]
+
+
+[project.urls]
+"Homepage" = "<PAGE URL>"
+"Bug Tracker" = "<PAGE URL>"
+
+
+[project.scripts]

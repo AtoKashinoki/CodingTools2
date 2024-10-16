@@ -2,6 +2,7 @@
 requires = ["setuptools>=70.1.0"]
 build-backend = "setuptools.build_meta"
 
+
 [project]
 name = "CodingTools2"
 version = "0.0.0"
@@ -23,6 +24,11 @@ classifiers = [
     "Operating System :: Microsoft :: Windows :: Windows 11",
 ]
 
+
 [project.urls]
 "Homepage" = "https://github.com/AtoKashinoki/CodingTools"
 "Bug Tracker" = "https://github.com/AtoKashinoki/CodingTools/issues"
+
+
+[project.scripts]
+initialize = "CodingTools2.Commands:initialize"
