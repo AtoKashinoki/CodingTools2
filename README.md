@@ -22,11 +22,12 @@ This module contain many processes for creating any code.
   - [ ] ansi functions
 - [ ] Types.py
   - [ ] Skeleton class
-- [x] Definitions.py
+- [ ] Definitions.py
   - [x] System definitions
   - [x] Index definitions
   - [x] Key definitions
   - [x] ANSI definitions
+  - [ ] Msvcrt definitions
 - [ ] Commands.py
   - [x] Skeleton class
   - [ ] Initialize class
