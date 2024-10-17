@@ -27,7 +27,7 @@ This module contain many processes for creating any code.
   - [x] Index definitions
   - [x] Key definitions
   - [x] ANSI definitions
-  - [ ] Msvcrt definitions
+  - [x] Msvcrt definitions
 - [ ] Commands.py
   - [x] Skeleton class
   - [ ] Initialize class
