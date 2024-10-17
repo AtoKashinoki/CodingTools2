@@ -24,6 +24,7 @@ This module contain many processes for creating any code.
   - [x] Index definitions
   - [x] Key definitions
   - [x] ANSI definitions
+  - [x] Msvcrt definitions
 - [ ] Commands.py
   - [ ] Initialize class
   - [ ] generate class
