@@ -17,9 +17,9 @@ This module contain many processes for creating any code.
   - [ ] Skeleton class
 - [ ] Decorators.py
   - [ ] Skeleton class
-- [ ] Functions.py
+- [x] Functions.py
   - [x] Skeleton class
-  - [ ] Convert functions
+  - [x] Convert functions
 - [ ] Types.py
   - [ ] Skeleton class
 - [x] Definitions.py

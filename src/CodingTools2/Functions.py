@@ -3,7 +3,7 @@
 
 This file contain functions for developing programs.
 """
-from fileinput import lineno
+
 
 """ Prevent execution this file """
 
@@ -27,10 +27,21 @@ class FunctionsSkeleton(InheritanceSkeleton):
     ...
 
 
-""" ANSI functions """
+""" Convert functions """
 
 
-class ANSI(FunctionsSkeleton):
-    """ ANSI functions """
+class Convert(FunctionsSkeleton):
+    """ Convert functions """
+
+    @staticmethod
+    def index_from(_position: tuple[int, int], length: int) -> int:
+        """ Convert position to index """
+        return _position[0] + _position[1] * length
+
+    @staticmethod
+    def position_from(index: int, length: int) -> tuple[int, int]:
+        """ Convert index to position """
+        return index%length, index//length
+
     ...
 
