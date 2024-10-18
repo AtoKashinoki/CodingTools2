@@ -19,10 +19,10 @@ This module contain many processes for creating any code.
   - [ ] Skeleton class
 - [ ] Functions.py
   - [x] Skeleton class
-  - [ ] ansi functions
+  - [ ] Convert functions
 - [ ] Types.py
   - [ ] Skeleton class
-- [ ] Definitions.py
+- [x] Definitions.py
   - [x] System definitions
   - [x] Index definitions
   - [x] Key definitions

@@ -74,3 +74,5 @@ class DataClass(InheritanceSkeleton):
 
     def __repr__(self) -> str:
         return "{}".format(self.__values())
+
+    ...
