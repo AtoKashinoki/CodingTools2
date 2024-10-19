@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "CodingTools2"
-version = "2.2.1"
+version = "2.3.0"
 description = "This module contains tools that you can use for development."
 
 readme = "README.md"
@@ -26,8 +26,8 @@ classifiers = [
 
 
 [project.urls]
-"Homepage" = "https://github.com/AtoKashinoki/CodingTools"
-"Bug Tracker" = "https://github.com/AtoKashinoki/CodingTools/issues"
+"Homepage" = "https://github.com/AtoKashinoki/CodingTools2"
+"Bug Tracker" = "https://github.com/AtoKashinoki/CodingTools2/issues"
 
 
 [project.scripts]

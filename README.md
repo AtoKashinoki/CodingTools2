@@ -6,8 +6,8 @@ This module contain many processes for creating any code.
 ## Using
 
 ## Developing
-- [ ] \_\_init__.py
-  - [ ] Import processes
+- [x] \_\_init__.py
+  - [x] Import processes
 - [x] Inheritance.py
   - [x] Skeleton class
   - [x] DataClass class

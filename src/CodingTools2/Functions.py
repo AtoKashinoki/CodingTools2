@@ -34,14 +34,14 @@ class Convert(FunctionsSkeleton):
     """ Convert functions """
 
     @staticmethod
-    def index_from(_position: tuple[int, int], length: int) -> int:
+    def index_from(_position: tuple[int, int], _length: int) -> int:
         """ Convert position to index """
-        return _position[0] + _position[1] * length
+        return _position[0] + _position[1] * _length
 
     @staticmethod
-    def position_from(index: int, length: int) -> tuple[int, int]:
+    def position_from(_index: int, _length: int) -> tuple[int, int]:
         """ Convert index to position """
-        return index%length, index//length
+        return _index % _length, _index // _length
 
     ...
 
