@@ -36,6 +36,7 @@ class Convert(FunctionsSkeleton):
     @staticmethod
     def index_from(_position: tuple[int, int], _length: int) -> int:
         """ Convert position to index """
+        if not 0 <= _position[0] < _length: raise IndexError
         return _position[0] + _position[1] * _length
 
     @staticmethod
