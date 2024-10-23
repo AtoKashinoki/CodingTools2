@@ -56,6 +56,7 @@ class ANSI(DefinitionSkeleton):
             CYAN: str
             GRAY: str
             WHITE: str
+            Clear: str
             ...
 
         class BackgroundColor(DefinitionSkeleton):

@@ -1,7 +1,7 @@
 
 
-from CodingTools2.Definitions import Msvcrt
+from CodingTools2.Definitions import ANSIKeys
 
-
-Key = Msvcrt.Key
-print(Key.a)
+for i in range(200):
+    print(i, ANSIKeys.texture(i))
+    ...

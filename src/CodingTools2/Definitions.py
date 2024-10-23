@@ -108,7 +108,8 @@ class ANSI(DefinitionSkeleton):
             MAGENTA = ANSIKeys.texture(35)
             CYAN = ANSIKeys.texture(36)
             GRAY = ANSIKeys.texture(37)
-            WHITE = ANSIKeys.texture(38)
+            WHITE = ANSIKeys.texture(39)
+            Clear = ANSIKeys.texture(39)
             ...
 
         """ Background color definitions """
