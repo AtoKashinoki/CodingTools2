@@ -16,6 +16,7 @@ if __name__ == '__main__':
 """ imports  """
 
 
+from .Definitions import Format
 from .Inheritance import InheritanceSkeleton
 
 
@@ -43,6 +44,10 @@ class Convert(FunctionsSkeleton):
     def position_from(_index: int, _length: int) -> tuple[int, int]:
         """ Convert index to position """
         return _index % _length, _index // _length
+
+    @staticmethod
+    def private_member(_cls: object, _name: str) -> str:
+        return Format.private_member.format(_cls, _name)
 
     ...
 

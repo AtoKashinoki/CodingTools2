@@ -40,6 +40,17 @@ class System(DefinitionSkeleton):
     ...
 
 
+""" python format """
+
+
+class Format(DefinitionSkeleton):
+    """ Format definitions """
+    private_member: str = "_{}{}"
+    unsupported_operand: str = \
+        "unsupported operand type(s) for {} +: '{}' and '{}'"
+    ...
+
+
 """ Index and Key """
 
 
@@ -166,6 +177,31 @@ class Msvcrt(DefinitionSkeleton):
             Top, Left, Right, Bottom = 72, 75,  77, 80
 
             ...
+
+    """ alphabet datas definitions """
+    alphabet: str = (
+        "A", "B", "C", "D", "E", "F", "G", "H", "I",
+        "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+        "S", "T", "U", "V", "W", "X", "Y", "Z",
+        "a", "b", "c", "d", "e", "f", "g", "h", "I",
+        "j", "k", "l", "m", "n", "o", "p", "q", "r",
+        "s", "t", "u", "v", "w", "x", "y", "z",
+    )
+
+    alphabet_keys: tuple[int] = tuple([
+        Key.A, Key.B, Key.C, Key.D, Key.E, Key.F, Key.G, Key.H, Key.I,
+        Key.J, Key.K, Key.L, Key.M, Key.N, Key.O, Key.P, Key.Q, Key.R,
+        Key.S, Key.T, Key.U, Key.V, Key.W, Key.X, Key.Y, Key.Z,
+        Key.a, Key.b, Key.c, Key.d, Key.e, Key.f, Key.g, Key.h, Key.i,
+        Key.j, Key.k, Key.l, Key.m, Key.n, Key.o, Key.p, Key.q, Key.r,
+        Key.s, Key.t, Key.u, Key.v, Key.w, Key.x, Key.y, Key.z,
+    ])
+
+    alphabet_dict: dict[int, str] = \
+        dict(zip(alphabet_keys, alphabet))
+
+    alphabet_rev_dict: dict[int, str] = \
+        dict(zip(alphabet, alphabet_keys))
 
     ...
 

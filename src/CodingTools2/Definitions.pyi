@@ -11,6 +11,12 @@ class System(DefinitionSkeleton):
     REBOOT: int
     ...
 
+class Format(DefinitionSkeleton):
+    private_member: str
+    unsupported_operand: str
+    ...
+
+
 class Index(DefinitionSkeleton):
     X: int
     Y: int
@@ -97,6 +103,11 @@ class Msvcrt(DefinitionSkeleton):
 
         Top, Left, Right, Bottom = 72, 75, 77, 80
         ...
+
+    alphabet: str
+    alphabet_keys: tuple[int]
+    alphabet_dict: dict[int, str]
+    alphabet_rev_dict: dict[int, str]
 
     ...
 

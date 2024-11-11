@@ -19,6 +19,17 @@ class PreventExecution(SyntaxError):
 
     ...
 
+
+class Exit(Exception):
+    """ Exit the program """
+
+    def __init__(self):
+        """ Initialize message """
+        super().__init__("Exit the program.")
+        return
+
+    ...
+
 if __name__ == '__main__':
     raise PreventExecution(__file__)
 
