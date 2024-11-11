@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
 
 from .Inheritance import DataClass
+from .Decorator import Initializer
 
 
 """ Definition skeleton """
@@ -40,7 +41,49 @@ class System(DefinitionSkeleton):
     ...
 
 
-""" python format """
+@Initializer()
+class Os(DefinitionSkeleton):
+    """ Os definitions """
+
+    class Windows(DefinitionSkeleton):
+        """ Windows definitions """
+        name = "nt"
+
+        class Command(DefinitionSkeleton):
+            python = "python {}"
+            clear = "cls"
+            ...
+
+        ...
+
+    class Linux(DefinitionSkeleton):
+        """ Linux definitions """
+        name = "posix"
+
+        class Command(DefinitionSkeleton):
+            python = "python {}"
+            clear = "clear"
+            ...
+
+        ...
+
+    def __getitem__(
+            self, key: str
+    ) -> type[Windows | Linux]:
+        """ Return os class """
+        match key:
+            case self.Windows.name:
+                cls = self.Windows
+            case self.Linux.name:
+                cls = self.Linux
+            case _:
+                raise KeyError(key)
+        return cls
+
+    ...
+
+
+""" string format """
 
 
 class Format(DefinitionSkeleton):

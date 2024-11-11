@@ -16,8 +16,11 @@ if __name__ == '__main__':
 """ imports  """
 
 
-from .Definitions import Format
+import os
+import sys
+from .Definitions import Format, Os as DefOs
 from .Inheritance import InheritanceSkeleton
+from .Decorator import Initializer
 
 
 """ Functions class skeleton """
@@ -25,6 +28,48 @@ from .Inheritance import InheritanceSkeleton
 
 class FunctionsSkeleton(InheritanceSkeleton):
     """ Functions class skeleton """
+    ...
+
+
+""" Os """
+
+
+@Initializer()
+class Os(FunctionsSkeleton):
+    """ Functions about os """
+
+    """ values """
+    __name = os.name
+    __command = DefOs[__name].Command
+
+    """ properties """
+    @property
+    def name(self) -> str: return self.name
+    @property
+    def command(
+            self
+    ) -> DefOs.Windows.Command | DefOs.Linux.Command:
+        return self.__command
+
+    ...
+
+Os: Os
+
+
+""" Python """
+
+
+class Python(FunctionsSkeleton):
+    """ Functions about python """
+
+    @staticmethod
+    def run(_file: str) -> int:
+        """ Run python file """
+        python = Os.command.python
+        path = "{}\\{}".format(os.getcwd(), _file)
+        exit_code = os.system(python.format(path))
+        return exit_code
+
     ...
 
 

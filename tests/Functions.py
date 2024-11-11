@@ -3,7 +3,9 @@
 """
 
 
-from CodingTools2.Functions import ANSI
+from CodingTools2.Functions import Python
 
 
-print(f"{ANSI.ansi}31mTest!")
+if __name__ == '__main__':
+    print(Python.run("tests\\__init__.py"))
+    ...

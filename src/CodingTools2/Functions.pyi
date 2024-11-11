@@ -1,9 +1,28 @@
 
 
 from .Inheritance import InheritanceSkeleton
+from .Definitions import Os as DefOs
 
 
 class FunctionsSkeleton(InheritanceSkeleton): ...
+
+class Os(FunctionsSkeleton):
+    __name: str
+    __command: DefOs.Windows | DefOs.Linux
+    @property
+    def name(self) -> str: ...
+    @property
+    def command(
+            self
+    ) -> DefOs.Windows.Command | DefOs.Linux.Command: ...
+    ...
+
+Os = Os()
+
+class Python(FunctionsSkeleton):
+    @staticmethod
+    def run(_file: str) -> int: ...
+    ...
 
 class Convert(FunctionsSkeleton):
     @staticmethod

@@ -11,6 +11,27 @@ class System(DefinitionSkeleton):
     REBOOT: int
     ...
 
+class Os(DefinitionSkeleton):
+    class Windows(DefinitionSkeleton):
+        name: str
+        class Command(DefinitionSkeleton):
+            python: str
+            clear: str
+            ...
+        ...
+    class Linux(DefinitionSkeleton):
+        name: str
+        class Command(DefinitionSkeleton):
+            python: str
+            clear: str
+            ...
+        ...
+
+    def __getitem__(self, key: str): ...
+    ...
+
+Os = Os()
+
 class Format(DefinitionSkeleton):
     private_member: str
     unsupported_operand: str
