@@ -151,6 +151,7 @@ class Msvcrt(DefinitionSkeleton):
             """ msvcrt ord keys definitions """
 
             """ special keys """
+            Special = 224
             BackSpace = 8
             BS = BackSpace
             Enter = 13
