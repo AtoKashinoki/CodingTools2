@@ -156,6 +156,7 @@ class Msvcrt(DefinitionSkeleton):
             BS = BackSpace
             Enter = 13
             Space = 32
+            Ins = 82
             Del = 83
 
             """ number keys """
