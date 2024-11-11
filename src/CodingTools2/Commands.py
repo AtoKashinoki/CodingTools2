@@ -18,6 +18,7 @@ import os
 import sys
 from abc import abstractmethod
 from .Inheritance import InheritanceSkeleton
+from .Decorator import Initializer
 
 
 """ Skeleton """
@@ -64,7 +65,10 @@ class CommandSkeleton(InheritanceSkeleton):
 
     def execute_command_function(self) -> str | None:
         """ Execute command function """
-        command = self.__args[0]
+        command = ""
+        if not len(self.__args) == 0:
+            command = self.__args[0]
+            ...
         key = self.KEYS[command] if command in self.KEYS else None
         if key is None:
             print(self.COMMAND_NOT_FOUND)
@@ -79,6 +83,7 @@ class CommandSkeleton(InheritanceSkeleton):
 """ Initialize command """
 
 
+@Initializer()
 class Initialize(CommandSkeleton):
     """ Initialize command """
 
@@ -102,7 +107,7 @@ class Initialize(CommandSkeleton):
     """ commands """
 
     help_message: str = (
-        "help\n"
+        "help {command} [options]\n"
         "   command\n"
         "       help, -h        : Show help of this command\n"
         "       toml            : Create toml file\n"
@@ -190,5 +195,3 @@ class Initialize(CommandSkeleton):
         return
 
     ...
-
-initialize = Initialize()

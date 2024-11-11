@@ -15,8 +15,9 @@ This module contain many processes for creating any code.
   - [x] PreventExecution
 - [ ] Descriptor.py
   - [ ] Skeleton class
-- [ ] Decorators.py
-  - [ ] Skeleton class
+- [x] Decorators.py
+  - [x] Skeleton class
+  - [x] Initializer decorator
 - [x] Functions.py
   - [x] Skeleton class
   - [x] Convert functions

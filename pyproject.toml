@@ -31,4 +31,4 @@ classifiers = [
 
 
 [project.scripts]
-initialize = "CodingTools2.Commands:initialize"
+initialize = "CodingTools2.Commands:Initialize"
