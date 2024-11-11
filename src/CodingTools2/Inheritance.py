@@ -65,7 +65,9 @@ class DataClass(InheritanceSkeleton):
     """ Initialize """
     def __init__(self, **kwargs):
         """ Initialize values """
-        self.__setitems__(*zip(*kwargs.items()))
+        if not len(kwargs) == 0:
+            self.__setitems__(*zip(*kwargs.items()))
+            ...
         self.__value_types = DataClass.__value_types
         self.__protect_values = DataClass.__protect_values
         return
