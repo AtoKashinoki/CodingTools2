@@ -15,3 +15,14 @@ if __name__ == '__main__':
 
 """ Types """
 
+
+class Vector(object):
+    """ Vector contain class """
+
+    """ values """
+
+    """ properties """
+
+    """ processes """
+
+    ...
