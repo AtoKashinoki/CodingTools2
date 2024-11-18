@@ -18,5 +18,5 @@ _list = [
 if __name__ == '__main__':
 
     vector = Vector(_list)
-    print(vector.size)
+    print(vector)
     ...

@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
 from CodingTools2.Errors import args_empty
 from CodingTools2.Functions import Generate, Get
-from CodingTools2.Definitions import Sep
+from CodingTools2.Definitions import Format, Sep
 
 
 """ Types """
@@ -66,6 +66,9 @@ class Vector(object):
         return
 
     def __repr__(self):
-        return
+        return Format.repr_base.format(
+            self.__class__.__name__,
+            self.__data,
+        )
 
     ...
