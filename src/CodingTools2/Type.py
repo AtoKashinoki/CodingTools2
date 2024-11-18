@@ -363,6 +363,13 @@ class Vector(object):
             Calculate.ge,
         ))
 
+    def eq_data(self, other: 'Vector' or tuple or list) -> bool:
+        """ Return self.data == other.data """
+        if isinstance(other, Vector):
+            other = other.data
+            ...
+        return self.data == tuple(other)
+
     """ container """
 
     def __iter__(self):

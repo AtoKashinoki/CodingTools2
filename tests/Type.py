@@ -14,6 +14,7 @@ if __name__ == '__main__':
     vector2 = Vector(_list)
 
     print(-vector < vector2)
+    print(vector.eq_data(vector2))
 
     print(vector, vector2)
     ...
