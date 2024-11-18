@@ -1,5 +1,5 @@
 from copy import deepcopy
-
+from time import time
 from CodingTools2.Inheritance import DataClass
 
 
@@ -18,6 +18,11 @@ class Test(DataClass):
 if __name__ == "__main__":
     test = Test(test="test2")
     test.test2 = 1
+    s = time()
+    for _ in range(1000000):
+        test += {"a": 0}
+        ...
+    print(time() - s)
     test["key"] = "key"
     test += {"test6": "test6"}
     test2 = deepcopy(test)

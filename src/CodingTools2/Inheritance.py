@@ -152,7 +152,7 @@ class DataClass(InheritanceSkeleton):
                 other.__class__.__name__,
             )
 
-    def __add__(self, other) -> 'DataClass':
+    def __add__(self, other: 'DataClass' or dict) -> 'DataClass':
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
                 "+", other
@@ -161,10 +161,12 @@ class DataClass(InheritanceSkeleton):
         new.__setitems__(*zip(*other.items()))
         return new
 
-    def __iadd__(self, other) -> 'DataClass':
+    def __iadd__(self, other: 'DataClass' or dict) -> 'DataClass':
         return self + other
 
-    def __sub__(self, other) -> 'DataClass':
+    def __sub__(
+            self, other: 'DataClass' or dict or tuple or list or set
+    ) -> 'DataClass':
         if not (
             isinstance(other, DataClass) or
             isinstance(other, dict) or
@@ -182,10 +184,12 @@ class DataClass(InheritanceSkeleton):
         new.__delitems__(other)
         return new
 
-    def __isub__(self, other) -> 'DataClass':
+    def __isub__(
+            self, other: 'DataClass' or dict or tuple or list or set
+    ) -> 'DataClass':
         return self - other
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
                 "==", other
@@ -195,14 +199,14 @@ class DataClass(InheritanceSkeleton):
             for key, value in other.items()
         ])
 
-    def __ne__(self, other) -> bool:
+    def __ne__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
                 "!=", other
             ))
         return not self == other
 
-    def __lt__(self, other) -> bool:
+    def __lt__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
                 "<", other
@@ -213,7 +217,7 @@ class DataClass(InheritanceSkeleton):
             for key in other.keys()
         ])
 
-    def __gt__(self, other) -> bool:
+    def __gt__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
                 ">", other
