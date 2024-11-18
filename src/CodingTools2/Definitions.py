@@ -99,6 +99,29 @@ class Sep(DefinitionSkeleton):
     ...
 
 
+class Operator(DefinitionSkeleton):
+    """ Operator definitions """
+    add = "+"
+    sub = "-"
+    mul = "*"
+    div = "/"
+    mod = "%"
+    ...
+
+
+""" calculate """
+
+
+class Calculate(DefinitionSkeleton):
+    """ Calculate definitions """
+    add = lambda x, y: x + y
+    sub = lambda x, y: x - y
+    mul = lambda x, y: x * y
+    div = lambda x, y: x / y
+    mod = lambda x, y: x % y
+    ...
+
+
 """ Index and Key """
 
 

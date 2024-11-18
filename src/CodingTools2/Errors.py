@@ -41,6 +41,7 @@ args_empty = (
     "{} class args cannot be empty.\n"
     "   Need to provide either {}."
 )
+different_size = "Cannot be calculated due to different sizes"
 
 
 """ errors """

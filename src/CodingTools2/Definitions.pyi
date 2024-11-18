@@ -1,4 +1,5 @@
 
+from typing import Callable
 from .Inheritance import DataClass
 
 
@@ -39,6 +40,22 @@ class Format(DefinitionSkeleton):
 
 class Sep(DefinitionSkeleton):
     or_: str = " or "
+    ...
+
+class Operator(DefinitionSkeleton):
+    add: str = "+"
+    sub: str = "-"
+    mul: str = "*"
+    div: str = "/"
+    mod: str = "%"
+    ...
+
+class Calculate(DefinitionSkeleton):
+    add = lambda x, y: x + y
+    sub = lambda x, y: x - y
+    mul = lambda x, y: x * y
+    div = lambda x, y: x / y
+    mod = lambda x, y: x % y
     ...
 
 class Index(DefinitionSkeleton):

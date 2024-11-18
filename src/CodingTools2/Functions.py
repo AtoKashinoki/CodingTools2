@@ -115,6 +115,9 @@ class Generate(FunctionsSkeleton):
     ...
 
 
+""" Getter """
+
+
 class Get(FunctionsSkeleton):
     """ Getter functions """
 
@@ -127,9 +130,24 @@ class Get(FunctionsSkeleton):
             """ Return size of list """
             if not isinstance(_list, list):
                 return []
+            if len(_list) < 1:
+                return [0]
             return size_getter(_list[0]) + [len(_list)]
 
 
         return tuple(size_getter(_list))
+
+    ...
+
+
+""" Validator functions """
+
+
+class Validate(FunctionsSkeleton):
+    """ Validate functions """
+
+    @staticmethod
+    def number(_target: any) -> bool:
+        return isinstance(_target, int) or isinstance(_target, float)
 
     ...
