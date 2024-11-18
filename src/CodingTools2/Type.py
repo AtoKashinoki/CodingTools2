@@ -40,12 +40,21 @@ class Vector(object):
     def size(self) -> tuple: return self.__size
 
     """ processes """
+    # class
+    @classmethod
+    def zeros(cls, _size: tuple[int, int]) -> 'Vector':
+        return cls(size=_size)
+
+    @classmethod
+    def ones(cls, _size: tuple[int, int]) -> 'Vector':
+        return cls(size=_size, initial_value=1)
 
     # instance
     def __init__(
             self,
             _data: list = None,
-            size:tuple[int, ...] = None
+            size:tuple[int, ...] = None,
+            initial_value: int = 0,
     ):
         """ Initialize vector data """
         if _data is None and size is None:
@@ -55,7 +64,7 @@ class Vector(object):
             ))
 
         if _data is None:
-            _data = Generate.list_frame(size)
+            _data = Generate.list_frame(size, initial_value)
             ...
         elif size is None:
             size = Get.list_size(_data)
