@@ -18,11 +18,7 @@ if __name__ == '__main__':
 
 from typing import Callable
 from copy import deepcopy
-from CodingTools2.Errors import (
-    args_empty,
-    different_size,
-    unsupported_operand,
-)
+from CodingTools2.Errors import Message
 from CodingTools2.Functions import (
     Generate, Get,
     Validate,
@@ -69,7 +65,7 @@ class Vector(object):
     ):
         """ Initialize vector data """
         if _data is None and size is None:
-            raise TypeError(args_empty.format(
+            raise TypeError(Message.args_empty.format(
                 self.__class__.__name__,
                 Sep.or_.join(("data", "size"))
             ))
@@ -115,15 +111,15 @@ class Vector(object):
         """ Validate if it can be calculated """
         if isinstance(other, Vector):
             if self.size != other.size:
-                raise TypeError(different_size)
+                raise TypeError(Message.different_size)
             return
 
         elif isinstance(other, tuple) or isinstance(other, list):
             if self.size != Get.list_size(other):
-                raise TypeError(different_size)
+                raise TypeError(Message.different_size)
             return
 
-        raise TypeError(unsupported_operand(
+        raise TypeError(Message.unsupported_operand(
             operator,
             self.__class__.__name__, other.__class__.__name__
         ))
@@ -391,5 +387,40 @@ class Vector(object):
 
     def __contains__(self, data: any) -> bool:
         return data in self.__data
+
+    ...
+
+
+class Vector1D(Vector):
+    """ Vector class of 2 dimension """
+
+    """ values """
+
+    """ properties """
+
+    """ processes """
+
+    # instance
+    def __init__(
+            self,
+            _data: tuple[int, int] | list[int, int] = None,
+            size: int = None,
+            initial_value: int = 0,
+    ):
+        """ Initialize vector data """
+        if _data is None and size is None:
+            raise TypeError(Message.args_empty)
+
+        if _data is None:
+            _data = [initial_value for _ in range(size)]
+            ...
+        elif size is None:
+            size = len(_data)
+            ...
+
+        super().__init__(_data, (size, ))
+        return
+
+    """ operators """
 
     ...
