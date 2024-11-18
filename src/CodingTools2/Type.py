@@ -372,7 +372,24 @@ class Vector(object):
 
     """ container """
 
+    def __getitem__(self, key: int) -> any:
+        return self.__data[key]
+
+    def __setitem__(self, key: int, value: any) -> None:
+        self.__data[key] = value
+        return
+
+    def __delitem__(self, key: int) -> None:
+        del self.__data[key]
+        return
+
+    def __len__(self) -> int:
+        return len(self.__data)
+
     def __iter__(self):
         return iter(self.__data)
+
+    def __contains__(self, data: any) -> bool:
+        return data in self.__data
 
     ...

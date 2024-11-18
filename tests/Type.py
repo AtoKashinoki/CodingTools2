@@ -15,6 +15,6 @@ if __name__ == '__main__':
 
     print(-vector < vector2)
     print(vector.eq_data(vector2))
-
+    print(10 in vector)
     print(vector, vector2)
     ...
