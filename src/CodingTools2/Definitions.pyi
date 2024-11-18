@@ -6,24 +6,24 @@ class DefinitionSkeleton(DataClass): ...
 
 
 class System(DefinitionSkeleton):
-    EXIT: int
-    ERROR: int
-    REBOOT: int
+    EXIT: int = 0
+    ERROR: int = 1
+    REBOOT: int = 2
     ...
 
 class Os(DefinitionSkeleton):
     class Windows(DefinitionSkeleton):
-        name: str
+        name: str = "nt"
         class Command(DefinitionSkeleton):
-            python: str
-            clear: str
+            python: str = "python {}"
+            clear: str = "cls"
             ...
         ...
     class Linux(DefinitionSkeleton):
-        name: str
+        name: str = "posix"
         class Command(DefinitionSkeleton):
-            python: str
-            clear: str
+            python: str = "python {}"
+            clear: str = "clear"
             ...
         ...
 
@@ -33,23 +33,22 @@ class Os(DefinitionSkeleton):
 Os = Os()
 
 class Format(DefinitionSkeleton):
-    private_member: str
+    private_member: str = "_{}{}"
+    repr_base: str = "{}{}"
     ...
 
 class Sep(DefinitionSkeleton):
-    or_: str
+    or_: str = " or "
     ...
 
 class Index(DefinitionSkeleton):
-    X: int
-    Y: int
-    Z: int
+    X, Y, Z = range(3)
     ...
 
 class Key(DefinitionSkeleton): ...
 
 class ANSIKeys(DefinitionSkeleton):
-    KEY: str
+    KEY: str = "\033["
     @staticmethod
     def texture(key: int) -> str: ...
     ...
