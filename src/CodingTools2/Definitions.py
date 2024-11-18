@@ -106,6 +106,13 @@ class Operator(DefinitionSkeleton):
     mul = "*"
     div = "/"
     mod = "%"
+    pow = "**"
+    eq = "=="
+    ne = "!="
+    lt = "<"
+    le = "<="
+    gt = ">"
+    ge = ">="
     ...
 
 
@@ -119,6 +126,13 @@ class Calculate(DefinitionSkeleton):
     mul = lambda x, y: x * y
     div = lambda x, y: x / y
     mod = lambda x, y: x % y
+    pow = lambda x, y: x ** y
+    eq = lambda x, y: x == y
+    ne = lambda x, y: x != y
+    lt = lambda x, y: x < y
+    le = lambda x, y: x <= y
+    gt = lambda x, y: x > y
+    ge = lambda x, y: x >= y
     ...
 
 

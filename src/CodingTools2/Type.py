@@ -3,7 +3,7 @@
 
 This file contain types for developing programs.
 """
-
+from Tools.scripts.win_add2path import modify
 
 """ Prevent execution this file """
 
@@ -92,6 +92,9 @@ class Vector(object):
         )
 
     """ operators """
+
+    # Arithmetic
+
     @staticmethod
     def calculate(
             _list1: list | tuple, _list2: list | tuple,
@@ -128,7 +131,7 @@ class Vector(object):
     def __add__(self, other: 'Vector' or tuple or list) -> 'Vector':
         self.validate_calculator(other, Operator.add)
         return Vector(self.calculate(
-            self.__data, list(other),
+            self.__data, other,
             Calculate.add,
         ))
 
@@ -141,7 +144,7 @@ class Vector(object):
     def __sub__(self, other: 'Vector' or tuple or list) -> 'Vector':
         self.validate_calculator(other, Operator.sub)
         return Vector(self.calculate(
-            self.__data, list(other),
+            self.__data, other,
             Calculate.sub,
         ))
 
@@ -203,7 +206,9 @@ class Vector(object):
     ) -> 'Vector':
         return Vector(other) / self
 
-    def __mod__(self, other: 'Vector' or tuple or list or int or float) -> 'Vector':
+    def __mod__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
         if Validate.number(other):
             return Vector(self.calculate(
                 self.__data,
@@ -226,5 +231,141 @@ class Vector(object):
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
         return Vector(other) % self
+
+    def __pow__(
+            self,
+            power: 'Vector' or tuple or list or int or float,
+            modulo=None
+    ) -> 'Vector':
+        if Validate.number(power):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=power).data,
+                Calculate.pow,
+            ))
+
+        self.validate_calculator(power, Operator.pow)
+        return Vector(self.calculate(
+            self.__data, power,
+            Calculate.pow,
+        ))
+
+    def __ipow__(
+            self, power: 'Vector' or tuple or list or int or float,
+            modulo=None
+    ) -> 'Vector':
+        return self ** power
+
+    def __rpow__(
+            self, other: 'Vector' or tuple or list or int or float,
+            modulo=None
+    ) -> 'Vector':
+        return Vector(other) ** modulo
+
+    def __neg__(self) -> 'Vector':
+        return self * -1
+
+    # Comparison
+
+    def __eq__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.eq,
+            ))
+
+        self.validate_calculator(other, Operator.eq)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.eq,
+        ))
+
+    def __ne__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.ne,
+            ))
+
+        self.validate_calculator(other, Operator.ne)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.ne,
+        ))
+
+    def __lt__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.lt,
+            ))
+
+        self.validate_calculator(other, Operator.lt)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.lt,
+        ))
+
+    def __le__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.le,
+            ))
+
+        self.validate_calculator(other, Operator.le)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.le,
+        ))
+
+    def __gt__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.gt,
+            ))
+
+        self.validate_calculator(other, Operator.gt)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.gt,
+        ))
+
+    def __ge__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.ge,
+            ))
+
+        self.validate_calculator(other, Operator.ge)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.ge,
+        ))
+
+    """ container """
+
+    def __iter__(self):
+        return iter(self.__data)
 
     ...
