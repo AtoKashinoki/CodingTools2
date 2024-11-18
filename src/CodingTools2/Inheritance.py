@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
 from abc import ABC, abstractmethod
 from copy import deepcopy
+from typing import KeysView, ItemsView
 from .Errors import unsupported_operand
 
 
@@ -81,11 +82,11 @@ class DataClass(InheritanceSkeleton):
             self.__values(),
         )
 
-    def keys(self):
+    def keys(self) -> KeysView:
         """ Return attributes keys """
         return self.__values().keys()
 
-    def items(self):
+    def items(self) -> ItemsView:
         """ Return attributes items """
         return self.__values().items()
 
@@ -104,7 +105,7 @@ class DataClass(InheritanceSkeleton):
             for key in keys
         )
 
-    def __setitem__(self, key: str, value) -> None:
+    def __setitem__(self, key: str, value: any) -> None:
         """ Set data in  data class """
         setattr(self, key, value)
         return
@@ -113,7 +114,7 @@ class DataClass(InheritanceSkeleton):
             self,
             keys: tuple[str] | list[str] | set[str],
             values: tuple[any] | list[any] | set[any]
-    ):
+    ) -> None:
         """ Set datas in data class """
         [
             setattr(self, key, value)
@@ -151,7 +152,7 @@ class DataClass(InheritanceSkeleton):
                 other.__class__.__name__,
             )
 
-    def __add__(self, other):
+    def __add__(self, other) -> 'DataClass':
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
                 "+", other
@@ -160,10 +161,10 @@ class DataClass(InheritanceSkeleton):
         new.__setitems__(*zip(*other.items()))
         return new
 
-    def __iadd__(self, other):
+    def __iadd__(self, other) -> 'DataClass':
         return self + other
 
-    def __sub__(self, other):
+    def __sub__(self, other) -> 'DataClass':
         if not (
             isinstance(other, DataClass) or
             isinstance(other, dict) or
@@ -181,7 +182,7 @@ class DataClass(InheritanceSkeleton):
         new.__delitems__(other)
         return new
 
-    def __isub__(self, other):
+    def __isub__(self, other) -> 'DataClass':
         return self - other
 
     def __eq__(self, other) -> bool:

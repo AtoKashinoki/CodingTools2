@@ -17,6 +17,7 @@ if __name__ == '__main__':
 import os
 import sys
 from abc import abstractmethod
+from typing import Callable
 from .Inheritance import InheritanceSkeleton
 from .Decorator import Initializer
 
@@ -59,7 +60,7 @@ class CommandSkeleton(InheritanceSkeleton):
         self.commands(self.__args)
         return
 
-    def search_method(self, _name: str):
+    def search_method(self, _name: str) -> Callable:
         """ Search and return method from self """
         return getattr(self, _name)
 

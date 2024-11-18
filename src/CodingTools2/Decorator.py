@@ -65,7 +65,7 @@ class Initializer(DecoratorSkeleton):
         self.__kwargs = kwargs
         return
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__texture.format(self.__args, self.__kwargs)
 
     def __call__(self, func: Callable) -> Callable:

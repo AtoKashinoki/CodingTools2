@@ -74,7 +74,7 @@ class Vector(object):
         self.__size = size
         return
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return Format.repr_base.format(
             self.__class__.__name__,
             self.__data,
