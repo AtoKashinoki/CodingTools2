@@ -19,7 +19,7 @@ if __name__ == '__main__':
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from typing import KeysView, ItemsView
-from .Errors import unsupported_operand
+from .Errors import Message
 
 
 """ Skeleton """
@@ -146,7 +146,7 @@ class DataClass(InheritanceSkeleton):
 
     def __unsupported_operand(self, operator: str, other) -> str:
         """ Return unsupported operand type """
-        return unsupported_operand(
+        return Message.unsupported_operand(
                 operator,
                 self.__class__.__name__,
                 other.__class__.__name__,
