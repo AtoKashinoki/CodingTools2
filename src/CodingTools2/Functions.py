@@ -96,3 +96,40 @@ class Convert(FunctionsSkeleton):
 
     ...
 
+
+""" Generator functions """
+
+
+class Generate(FunctionsSkeleton):
+    """ Generator functions """
+
+    @staticmethod
+    def list_frame(_size: tuple[int, ...], _initial_value: int = 0) -> list:
+        """ Generate list from size """
+        return [
+            _initial_value if len(_size) <= 1 else
+            Generate.list_frame(_size[:-1], _initial_value)
+            for _ in range(_size[-1])
+        ]
+
+    ...
+
+
+class Get(FunctionsSkeleton):
+    """ Getter functions """
+
+    @staticmethod
+    def list_size(_list: list) -> tuple[int] | tuple[int, ...]:
+        """ Return size of list """
+
+        # recall function
+        def size_getter(_list: list) -> list[int] | tuple[int, ...]:
+            """ Return size of list """
+            if not isinstance(_list, list):
+                return []
+            return size_getter(_list[0]) + [len(_list)]
+
+
+        return tuple(size_getter(_list))
+
+    ...

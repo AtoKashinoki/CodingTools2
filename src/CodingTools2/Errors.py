@@ -20,6 +20,22 @@ class PreventExecution(SyntaxError):
     ...
 
 
+if __name__ == '__main__':
+    raise PreventExecution(__file__)
+
+
+""" messages """
+
+
+args_empty = (
+    "{} class args cannot be empty.\n"
+    "   Need to provide either {}."
+)
+
+
+""" errors """
+
+
 class Exit(Exception):
     """ Exit the program """
 
@@ -29,7 +45,3 @@ class Exit(Exception):
         return
 
     ...
-
-if __name__ == '__main__':
-    raise PreventExecution(__file__)
-
