@@ -34,9 +34,11 @@ Os = Os()
 
 class Format(DefinitionSkeleton):
     private_member: str
-    unsupported_operand: str
     ...
 
+class Sep(DefinitionSkeleton):
+    or_: str
+    ...
 
 class Index(DefinitionSkeleton):
     X: int

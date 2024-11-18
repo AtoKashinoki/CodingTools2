@@ -83,14 +83,18 @@ class Os(DefinitionSkeleton):
     ...
 
 
-""" string format """
+""" string """
 
 
 class Format(DefinitionSkeleton):
     """ Format definitions """
     private_member: str = "_{}{}"
-    unsupported_operand: str = \
-        "unsupported operand type(s) for {} +: '{}' and '{}'"
+    ...
+
+
+class Sep(DefinitionSkeleton):
+    """ Sep definitions """
+    or_ = " or "
     ...
 
 

@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
 from CodingTools2.Errors import args_empty
 from CodingTools2.Functions import Generate, Get
+from CodingTools2.Definitions import Sep
 
 
 """ Types """
@@ -50,7 +51,7 @@ class Vector(object):
         if _data is None and size is None:
             raise TypeError(args_empty.format(
                 self.__class__.__name__,
-                " or ".join(("data", "size"))
+                Sep.or_.join(("data", "size"))
             ))
 
         if _data is None:
@@ -62,6 +63,9 @@ class Vector(object):
 
         self.__data = _data
         self.__size = size
+        return
+
+    def __repr__(self):
         return
 
     ...

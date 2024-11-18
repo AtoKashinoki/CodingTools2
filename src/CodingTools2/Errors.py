@@ -27,6 +27,16 @@ if __name__ == '__main__':
 """ messages """
 
 
+unsupported_operand_format: str = \
+    "unsupported operand type(s) for {}: '{}' and '{}'"
+
+def unsupported_operand(
+        operator: str, self_name: str, other_name: str
+) -> str:
+    return unsupported_operand_format.format(
+        operator, self_name, other_name
+    )
+
 args_empty = (
     "{} class args cannot be empty.\n"
     "   Need to provide either {}."

@@ -1,5 +1,9 @@
 
 
+unsupported_operand_format: str
+def unsupported_operand(
+        operator: str, self_name: str, other_name: str
+) -> str: ...
 args_empty: str
 
 

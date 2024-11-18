@@ -18,19 +18,7 @@ if __name__ == '__main__':
 
 from abc import ABC, abstractmethod
 from copy import deepcopy
-
-
-""" values """
-
-unsupported_operand_format: str = \
-    "unsupported operand type(s) for {}: '{}' and '{}'"
-
-def unsupported_operand(
-        operator: str, self_name: str, other_name: str
-) -> str:
-    return unsupported_operand_format.format(
-        operator, self_name, other_name
-    )
+from .Errors import unsupported_operand
 
 
 """ Skeleton """
