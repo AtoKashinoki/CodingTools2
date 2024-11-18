@@ -20,6 +20,7 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 from typing import KeysView, ItemsView
 from .Errors import unsupported_operand
+from .Definitions import Operator
 
 
 """ Skeleton """
@@ -155,7 +156,7 @@ class DataClass(InheritanceSkeleton):
     def __add__(self, other: 'DataClass' or dict) -> 'DataClass':
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
-                "+", other
+                Operator.add, other
             ))
         new = deepcopy(self)
         new.__setitems__(*zip(*other.items()))
@@ -175,7 +176,7 @@ class DataClass(InheritanceSkeleton):
             isinstance(other, set)
         ):
             raise TypeError(self.__unsupported_operand(
-                "-", other
+                Operator.sub, other
             ))
         new = deepcopy(self)
         if isinstance(other, DataClass) or isinstance(other, dict):
@@ -192,7 +193,7 @@ class DataClass(InheritanceSkeleton):
     def __eq__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
-                "==", other
+                Operator.eq, other
             ))
         return 0 == sum([
             not self.__getitem__(key) == value
@@ -202,14 +203,14 @@ class DataClass(InheritanceSkeleton):
     def __ne__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
-                "!=", other
+                Operator.ne, other
             ))
         return not self == other
 
     def __lt__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
-                "<", other
+                Operator.lt, other
             ))
         values = self.__values()
         return 0 == sum([
@@ -220,7 +221,7 @@ class DataClass(InheritanceSkeleton):
     def __gt__(self, other: 'DataClass' or dict) -> bool:
         if not (isinstance(other, DataClass) or isinstance(other, dict)):
             raise TypeError(self.__unsupported_operand(
-                ">", other
+                Operator.gt, other
             ))
         keys = other.keys()
         return 0 == sum([
