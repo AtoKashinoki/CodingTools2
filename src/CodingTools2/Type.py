@@ -126,42 +126,60 @@ class Vector(object):
             self.__class__.__name__, other.__class__.__name__
         ))
 
-    def __add__(self, other: 'Vector' or tuple or list) -> 'Vector':
-        self.validate_calculator(other, Operator.add)
+    def reform_cal_data(self, other) -> tuple | list:
+        """ Reform data for using in calculation """
+        if Validate.number(other):
+            other = Vector(size=self.size, initial_value=other).data
+            ...
+        elif isinstance(other, Vector):
+            other = other.data
+            ...
+        return other
+
+    def __add__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        other = self.reform_cal_data(other)
+        self.validate_calculator(other, Operator.mul)
         return Vector(self.calculate(
             self.__data, other,
             Calculate.add,
         ))
 
-    def __iadd__(self, other: 'Vector' or tuple or list) -> 'Vector':
+    def __iadd__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
         return self + other
 
-    def __radd__(self, other: 'Vector' or tuple or list) -> 'Vector':
-        return Vector(other) + self
+    def __radd__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        return self + other
 
-    def __sub__(self, other: 'Vector' or tuple or list) -> 'Vector':
+    def __sub__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.sub)
         return Vector(self.calculate(
             self.__data, other,
             Calculate.sub,
         ))
 
-    def __isub__(self, other: 'Vector' or tuple or list) -> 'Vector':
+    def __isub__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
         return self - other
 
-    def __rsub__(self, other: 'Vector' or tuple or list) -> 'Vector':
+    def __rsub__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
         return Vector(other) - self
 
     def __mul__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.mul,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.mul)
         return Vector(self.calculate(
             self.__data, other,
@@ -181,13 +199,7 @@ class Vector(object):
     def __truediv__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.div,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.div)
         return Vector(self.calculate(
             self.__data, other,
@@ -207,13 +219,7 @@ class Vector(object):
     def __floordiv__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.floor,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.floor)
         return Vector(self.calculate(
             self.__data, other,
@@ -233,13 +239,7 @@ class Vector(object):
     def __mod__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.mod,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.mod)
         return Vector(self.calculate(
             self.__data, other,
@@ -261,13 +261,7 @@ class Vector(object):
             power: 'Vector' or tuple or list or int or float,
             modulo=None
     ) -> 'Vector':
-        if Validate.number(power):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=power).data,
-                Calculate.pow,
-            ))
-
+        power = self.reform_cal_data(power)
         self.validate_calculator(power, Operator.pow)
         return Vector(self.calculate(
             self.__data, power,
@@ -294,13 +288,7 @@ class Vector(object):
     def __eq__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.eq,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.eq)
         return Vector(self.calculate(
             self.__data, other,
@@ -310,13 +298,7 @@ class Vector(object):
     def __ne__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.ne,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.ne)
         return Vector(self.calculate(
             self.__data, other,
@@ -326,13 +308,7 @@ class Vector(object):
     def __lt__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.lt,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.lt)
         return Vector(self.calculate(
             self.__data, other,
@@ -342,13 +318,7 @@ class Vector(object):
     def __le__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.le,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.le)
         return Vector(self.calculate(
             self.__data, other,
@@ -358,13 +328,7 @@ class Vector(object):
     def __gt__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.gt,
-            ))
-
+        other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.gt)
         return Vector(self.calculate(
             self.__data, other,
@@ -374,13 +338,7 @@ class Vector(object):
     def __ge__(
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
-        if Validate.number(other):
-            return Vector(self.calculate(
-                self.__data,
-                Vector(size=self.size, initial_value=other).data,
-                Calculate.ge,
-            ))
-
+        self.reform_cal_data(other)
         self.validate_calculator(other, Operator.ge)
         return Vector(self.calculate(
             self.__data, other,

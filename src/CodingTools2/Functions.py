@@ -122,7 +122,7 @@ class Get(FunctionsSkeleton):
     """ Getter functions """
 
     @staticmethod
-    def list_size(_list: list) -> tuple[int] | tuple[int, ...]:
+    def list_size(_list: list | tuple) -> tuple[int] | tuple[int, ...]:
         """ Return size of list """
 
         # recall function
@@ -135,7 +135,7 @@ class Get(FunctionsSkeleton):
             return size_getter(_list[0]) + [len(_list)]
 
 
-        return tuple(size_getter(_list))
+        return tuple(size_getter(list(_list)))
 
     ...
 

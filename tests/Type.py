@@ -10,6 +10,6 @@ _list = [
 
 
 if __name__ == '__main__':
-    vector = Vector1D(_list)
+    vector = Vector(_list)
     print(vector**vector)
     ...
