@@ -105,6 +105,7 @@ class Operator(DefinitionSkeleton):
     sub = "-"
     mul = "*"
     div = "/"
+    floor = "//"
     mod = "%"
     pow = "**"
     eq = "=="
@@ -125,6 +126,7 @@ class Calculate(DefinitionSkeleton):
     sub = lambda x, y: x - y
     mul = lambda x, y: x * y
     div = lambda x, y: x / y
+    floor = lambda x, y: x // y
     mod = lambda x, y: x % y
     pow = lambda x, y: x ** y
     eq = lambda x, y: x == y

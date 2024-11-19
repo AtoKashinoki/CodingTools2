@@ -47,6 +47,7 @@ class Operator(DefinitionSkeleton):
     sub: str = "-"
     mul: str = "*"
     div: str = "/"
+    floor: str = "//"
     mod: str = "%"
     pow: str = "**"
     eq = "=="
@@ -62,6 +63,7 @@ class Calculate(DefinitionSkeleton):
     sub = lambda x, y: x - y
     mul = lambda x, y: x * y
     div = lambda x, y: x / y
+    floor = lambda x, y: x // y
     mod = lambda x, y: x % y
     pow = lambda x, y: x ** y
     eq = lambda x, y: x == y

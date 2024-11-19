@@ -3,6 +3,8 @@
 
 This file contain types for developing programs.
 """
+from turtledemo.forest import doit2
+
 from Tools.scripts.win_add2path import modify
 
 """ Prevent execution this file """
@@ -95,7 +97,7 @@ class Vector(object):
     def calculate(
             _list1: list | tuple, _list2: list | tuple,
             calculate: Callable
-    ) -> list:
+    ) -> list | list[int, ...]:
         """ Calculate a list """
         return [
             calculate(d1, d2) if not isinstance(d1, list) else
@@ -201,6 +203,32 @@ class Vector(object):
             self, other: 'Vector' or tuple or list or int or float
     ) -> 'Vector':
         return Vector(other) / self
+
+    def __floordiv__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        if Validate.number(other):
+            return Vector(self.calculate(
+                self.__data,
+                Vector(size=self.size, initial_value=other).data,
+                Calculate.floor,
+            ))
+
+        self.validate_calculator(other, Operator.floor)
+        return Vector(self.calculate(
+            self.__data, other,
+            Calculate.floor,
+        ))
+
+    def __ifloordiv__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        return self // other
+
+    def __rfloordiv__(
+            self, other: 'Vector' or tuple or list or int or float
+    ) -> 'Vector':
+        return Vector(other) // self
 
     def __mod__(
             self, other: 'Vector' or tuple or list or int or float
@@ -394,33 +422,157 @@ class Vector(object):
 class Vector1D(Vector):
     """ Vector class of 2 dimension """
 
-    """ values """
-
-    """ properties """
-
     """ processes """
 
     # instance
     def __init__(
             self,
-            _data: tuple[int, int] | list[int, int] = None,
-            size: int = None,
+            _data: tuple[int, int] | list[int, int] | tuple | list = None,
+            length: int = None,
             initial_value: int = 0,
     ):
         """ Initialize vector data """
-        if _data is None and size is None:
+        if _data is None and length is None:
             raise TypeError(Message.args_empty)
 
         if _data is None:
-            _data = [initial_value for _ in range(size)]
+            _data = [initial_value for _ in range(length)]
             ...
-        elif size is None:
-            size = len(_data)
+        elif length is None:
+            length = len(_data)
             ...
 
-        super().__init__(_data, (size, ))
+        super().__init__(_data, (length,))
         return
 
     """ operators """
+
+    def __add__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 + d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __sub__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 - d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __mul__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 * d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __truediv__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 / d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __floordiv__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 // d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __mod__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 % d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __pow__(self, power: int | float, modulo=None):
+        return Vector1D([
+            d ** power
+            for d in self.data
+        ])
+
+    # Comparison
+
+    def __eq__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 == d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __ne__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 != d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __lt__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 < d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __le__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 <= d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __gt__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 > d2
+            for d1, d2 in zip(self.data, other)
+        ])
+
+    def __ge__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
+        if isinstance(other, Vector1D):
+            other = other.data
+            ...
+
+        return Vector1D([
+            d1 >= d2
+            for d1, d2 in zip(self.data, other)
+        ])
 
     ...
