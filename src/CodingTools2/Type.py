@@ -275,10 +275,10 @@ class Vector(object):
         return self ** power
 
     def __rpow__(
-            self, other: 'Vector' or tuple or list or int or float,
+            self, power: 'Vector' or tuple or list or int or float,
             modulo=None
     ) -> 'Vector':
-        return Vector(other) ** modulo
+        return Vector(power) ** power
 
     def __neg__(self) -> 'Vector':
         return self * -1
@@ -406,9 +406,11 @@ class Vector1D(Vector):
     """ operators """
 
     def __add__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d + other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 + d2
@@ -416,9 +418,11 @@ class Vector1D(Vector):
         ])
 
     def __sub__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d - other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 - d2
@@ -426,9 +430,11 @@ class Vector1D(Vector):
         ])
 
     def __mul__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d * other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 * d2
@@ -436,9 +442,11 @@ class Vector1D(Vector):
         ])
 
     def __truediv__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d / other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 / d2
@@ -446,9 +454,11 @@ class Vector1D(Vector):
         ])
 
     def __floordiv__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d // other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 // d2
@@ -456,27 +466,39 @@ class Vector1D(Vector):
         ])
 
     def __mod__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d % other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 % d2
             for d1, d2 in zip(self.data, other)
         ])
 
-    def __pow__(self, power: int | float, modulo=None):
+    def __pow__(
+            self, power: 'Vector' or int or float, modulo=None
+    ) -> 'Vector1D':
+        if Validate.number(power):
+            return Vector1D([
+                d ** power
+                for d in self.data
+            ])
+
         return Vector1D([
-            d ** power
-            for d in self.data
+            d1 ** d2
+            for d1, d2 in zip(self.data, power)
         ])
 
     # Comparison
 
     def __eq__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d == other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 == d2
@@ -484,9 +506,11 @@ class Vector1D(Vector):
         ])
 
     def __ne__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d != other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 != d2
@@ -494,9 +518,11 @@ class Vector1D(Vector):
         ])
 
     def __lt__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d < other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 < d2
@@ -504,9 +530,11 @@ class Vector1D(Vector):
         ])
 
     def __le__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d <= other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 <= d2
@@ -514,9 +542,11 @@ class Vector1D(Vector):
         ])
 
     def __gt__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d > other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 > d2
@@ -524,9 +554,11 @@ class Vector1D(Vector):
         ])
 
     def __ge__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
-        if isinstance(other, Vector1D):
-            other = other.data
-            ...
+        if Validate.number(other):
+            return Vector1D([
+                d >= other
+                for d in self.data
+            ])
 
         return Vector1D([
             d1 >= d2
