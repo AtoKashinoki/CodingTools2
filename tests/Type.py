@@ -2,6 +2,7 @@
 
 from time import time
 from CodingTools2.Type import *
+from CodingTools2.Decorator import Test
 
 
 _list = [
@@ -9,14 +10,11 @@ _list = [
 ]
 
 
+@Test.Time
 def test(_vector):
-    print(_vector)
-    s = time()
     for i in range(100000):
         _vector = _vector * _vector
         ...
-    print(time() - s)
-    print(_vector)
     return
 
 

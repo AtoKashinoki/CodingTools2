@@ -17,7 +17,9 @@ if __name__ == '__main__':
 
 
 from abc import ABC, abstractmethod
+from time import time
 from typing import Callable
+from Inheritance import DataClass
 
 
 """ decorator class skeleton  """
@@ -72,4 +74,42 @@ class Initializer(DecoratorSkeleton):
         """ Return instance """
         return func(*self.__args, **self.__kwargs)
 
+    ...
+
+
+""" Tester """
+
+
+class Test(DataClass):
+    """ Tester decorators """
+
+    class Time(DecoratorSkeleton):
+        """ Time tester """
+
+        """ values """
+        __target: Callable = None
+
+        def __init__(self, _func) -> None:
+            """ Set target function """
+            self.__target = _func
+            return
+
+        def __repr__(self) -> str:
+            return f"TimeTester[{self.__target.__name__}]"
+
+        def __call__(self, *args, **kwargs) -> any:
+            """ Run time test """
+
+            """ run """
+            start = time()
+            result = self.__target(*args, **kwargs)
+            end = time()
+
+            """ result """
+            print(f"Run time of '{self.__target.__name__}': {end-start}")
+
+            return result
+
+
+        ...
     ...
