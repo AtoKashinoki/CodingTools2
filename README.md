@@ -21,8 +21,9 @@ This module contain many processes for creating any code.
 - [x] Functions.py
   - [x] Skeleton class
   - [x] Convert functions
-- [ ] Types.py
-  - [ ] Skeleton class
+- [x] Types.py
+  - [x] Vector class
+  - [x] Vector1D class
 - [x] Definitions.py
   - [x] System definitions
   - [x] Index definitions
