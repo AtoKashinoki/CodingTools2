@@ -43,6 +43,7 @@ class DataClass(InheritanceSkeleton):
         "__main__",
         "__annotations__",
         "__slotnames__",
+        "__doc__"
     }
 
     """ properties """
