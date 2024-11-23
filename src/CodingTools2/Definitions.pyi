@@ -3,26 +3,26 @@ from typing import Callable
 from .Inheritance import DataClass
 
 
-class DefinitionSkeleton(DataClass): ...
+class DefinitionsSkeleton(DataClass): ...
 
 
-class System(DefinitionSkeleton):
+class System(DefinitionsSkeleton):
     EXIT: int = 0
     ERROR: int = 1
     REBOOT: int = 2
     ...
 
-class Os(DefinitionSkeleton):
-    class Windows(DefinitionSkeleton):
+class Os(DefinitionsSkeleton):
+    class Windows(DefinitionsSkeleton):
         name: str = "nt"
-        class Command(DefinitionSkeleton):
+        class Command(DefinitionsSkeleton):
             python: str = "python {}"
             clear: str = "cls"
             ...
         ...
-    class Linux(DefinitionSkeleton):
+    class Linux(DefinitionsSkeleton):
         name: str = "posix"
-        class Command(DefinitionSkeleton):
+        class Command(DefinitionsSkeleton):
             python: str = "python {}"
             clear: str = "clear"
             ...
@@ -33,16 +33,16 @@ class Os(DefinitionSkeleton):
 
 Os = Os()
 
-class Format(DefinitionSkeleton):
+class Format(DefinitionsSkeleton):
     private_member: str = "_{}{}"
     repr_base: str = "{}{}"
     ...
 
-class Sep(DefinitionSkeleton):
+class Sep(DefinitionsSkeleton):
     or_: str = " or "
     ...
 
-class Operator(DefinitionSkeleton):
+class Operator(DefinitionsSkeleton):
     add: str = "+"
     sub: str = "-"
     mul: str = "*"
@@ -58,7 +58,7 @@ class Operator(DefinitionSkeleton):
     ge = ">="
     ...
 
-class Calculate(DefinitionSkeleton):
+class Calculate(DefinitionsSkeleton):
     add = lambda x, y: x + y
     sub = lambda x, y: x - y
     mul = lambda x, y: x * y
@@ -74,22 +74,22 @@ class Calculate(DefinitionSkeleton):
     ge = lambda x, y: x >= y
     ...
 
-class Index(DefinitionSkeleton):
+class Index(DefinitionsSkeleton):
     X, Y, Z = range(3)
     ...
 
-class Key(DefinitionSkeleton): ...
+class Key(DefinitionsSkeleton): ...
 
-class ANSIKeys(DefinitionSkeleton):
+class ANSIKeys(DefinitionsSkeleton):
     KEY: str = "\033["
     @staticmethod
     def texture(key: int) -> str: ...
     ...
 
-class ANSI(DefinitionSkeleton):
-    class Texture(DefinitionSkeleton):
+class ANSI(DefinitionsSkeleton):
+    class Texture(DefinitionsSkeleton):
         CLEAR: str
-        class Font(DefinitionSkeleton):
+        class Font(DefinitionsSkeleton):
             BOLD: str
             THIN: str
             ITALIC: str
@@ -107,7 +107,7 @@ class ANSI(DefinitionSkeleton):
             DelHIDE: str
             ...
 
-        class FontColor(DefinitionSkeleton):
+        class FontColor(DefinitionsSkeleton):
             BLACK: str
             RED: str
             GREEN: str
@@ -120,7 +120,7 @@ class ANSI(DefinitionSkeleton):
             Clear: str
             ...
 
-        class BackgroundColor(DefinitionSkeleton):
+        class BackgroundColor(DefinitionsSkeleton):
             BLACK: str
             RED: str
             GREEN: str
@@ -135,8 +135,8 @@ class ANSI(DefinitionSkeleton):
 
     ...
 
-class Msvcrt(DefinitionSkeleton):
-    class Key(DefinitionSkeleton):
+class Msvcrt(DefinitionsSkeleton):
+    class Key(DefinitionsSkeleton):
         BackSpace = 8
         BS = BackSpace
         Enter = 13

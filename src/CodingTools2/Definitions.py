@@ -23,7 +23,7 @@ from .Decorator import Initializer
 """ Definition skeleton """
 
 
-class DefinitionSkeleton(DataClass):
+class DefinitionsSkeleton(DataClass):
     """ Definition values class skeleton """
     ...
 
@@ -33,7 +33,7 @@ class DefinitionSkeleton(DataClass):
 """ System """
 
 
-class System(DefinitionSkeleton):
+class System(DefinitionsSkeleton):
     """ System definitions """
     EXIT = 0
     ERROR = 1
@@ -42,25 +42,25 @@ class System(DefinitionSkeleton):
 
 
 @Initializer()
-class Os(DefinitionSkeleton):
+class Os(DefinitionsSkeleton):
     """ Os definitions """
 
-    class Windows(DefinitionSkeleton):
+    class Windows(DefinitionsSkeleton):
         """ Windows definitions """
         name = "nt"
 
-        class Command(DefinitionSkeleton):
+        class Command(DefinitionsSkeleton):
             python = "python {}"
             clear = "cls"
             ...
 
         ...
 
-    class Linux(DefinitionSkeleton):
+    class Linux(DefinitionsSkeleton):
         """ Linux definitions """
         name = "posix"
 
-        class Command(DefinitionSkeleton):
+        class Command(DefinitionsSkeleton):
             python = "python {}"
             clear = "clear"
             ...
@@ -86,20 +86,20 @@ class Os(DefinitionSkeleton):
 """ string """
 
 
-class Format(DefinitionSkeleton):
+class Format(DefinitionsSkeleton):
     """ Format definitions """
     private_member: str = "_{}{}"
     repr_base: str = "{}{}"
     ...
 
 
-class Sep(DefinitionSkeleton):
+class Sep(DefinitionsSkeleton):
     """ Sep definitions """
     or_ = " or "
     ...
 
 
-class Operator(DefinitionSkeleton):
+class Operator(DefinitionsSkeleton):
     """ Operator definitions """
     add = "+"
     sub = "-"
@@ -120,7 +120,7 @@ class Operator(DefinitionSkeleton):
 """ calculate """
 
 
-class Calculate(DefinitionSkeleton):
+class Calculate(DefinitionsSkeleton):
     """ Calculate definitions """
     add = lambda x, y: x + y
     sub = lambda x, y: x - y
@@ -141,13 +141,13 @@ class Calculate(DefinitionSkeleton):
 """ Index and Key """
 
 
-class Index(DefinitionSkeleton):
+class Index(DefinitionsSkeleton):
     """ Index definitions """
     X, Y, Z = range(3)
     ...
 
 
-class Key(DefinitionSkeleton):
+class Key(DefinitionsSkeleton):
     """ Key definitions """
     ...
 
@@ -155,7 +155,7 @@ class Key(DefinitionSkeleton):
 """ ANSI """
 
 
-class ANSIKeys(DefinitionSkeleton):
+class ANSIKeys(DefinitionsSkeleton):
     """ ANSI keys definitions """
     KEY = "\033["
 
@@ -165,18 +165,18 @@ class ANSIKeys(DefinitionSkeleton):
     ...
 
 
-class ANSI(DefinitionSkeleton):
+class ANSI(DefinitionsSkeleton):
     """ ANSI definitions """
 
     """ Texture """
-    class Texture(DefinitionSkeleton):
+    class Texture(DefinitionsSkeleton):
         """ Texture definitions """
 
         """ Clear """
         CLEAR = ANSIKeys.texture(0)
 
         """ Font """
-        class Font(DefinitionSkeleton):
+        class Font(DefinitionsSkeleton):
             """ Font definitions """
             BOLD = ANSIKeys.texture(1)
             THIN = ANSIKeys.texture(2)
@@ -196,7 +196,7 @@ class ANSI(DefinitionSkeleton):
             ...
 
         """ Font color definitions """
-        class FontColor(DefinitionSkeleton):
+        class FontColor(DefinitionsSkeleton):
             """ Font color definitions """
             BLACK = ANSIKeys.texture(30)
             RED = ANSIKeys.texture(31)
@@ -211,7 +211,7 @@ class ANSI(DefinitionSkeleton):
             ...
 
         """ Background color definitions """
-        class BackgroundColor(DefinitionSkeleton):
+        class BackgroundColor(DefinitionsSkeleton):
             """ Background color definitions """
             BLACK = ANSIKeys.texture(40)
             RED = ANSIKeys.texture(41)
@@ -231,10 +231,10 @@ class ANSI(DefinitionSkeleton):
 """ Msvcrt """
 
 
-class Msvcrt(DefinitionSkeleton):
+class Msvcrt(DefinitionsSkeleton):
     """ msvcrt definitions """
 
-    class Key(DefinitionSkeleton):
+    class Key(DefinitionsSkeleton):
             """ msvcrt ord keys definitions """
 
             """ special keys """
