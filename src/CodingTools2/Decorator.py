@@ -18,8 +18,8 @@ if __name__ == '__main__':
 
 from abc import ABC, abstractmethod
 from time import time
-from typing import Callable, ClassVar
-from Inheritance import DataClass
+from typing import Callable
+from .Inheritance import DataClass
 
 
 """ decorator class skeleton  """

@@ -20,12 +20,12 @@ if __name__ == '__main__':
 
 from typing import Callable
 from copy import deepcopy
-from CodingTools2.Errors import Message
-from CodingTools2.Functions import (
+from .Errors import Message
+from .Functions import (
     Generate, Get,
     Validate,
 )
-from CodingTools2.Definitions import (
+from .Definitions import (
     Format, Sep,
     Operator, Calculate,
 )
