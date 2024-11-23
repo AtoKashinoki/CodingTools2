@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
 from abc import ABC, abstractmethod
 from time import time
-from typing import Callable
+from typing import Callable, ClassVar
 from Inheritance import DataClass
 
 
@@ -83,6 +83,53 @@ class Initializer(DecoratorSkeleton):
 class Test(DataClass):
     """ Tester decorators """
 
+    class Repeat(DecoratorSkeleton):
+        """ Repeat tester """
+
+        """ values """
+        # class
+        __process_number: int = 0
+        # instance
+        __number_of_times: int = None
+
+        def __init__(self, _number_of_times: int) -> None:
+            """ Initialize settings """
+            self.__number_of_times: int = _number_of_times
+            return
+
+        @classmethod
+        def start_process(cls):
+            cls.__process_number += 1
+            return
+
+        @classmethod
+        def end_process(cls):
+            cls.__process_number -= 1
+            return
+
+        def __call__(self, _func: Callable) -> Callable:
+            """ Decorate a function """
+
+            """ Decorator """
+            def wrapper(*args, **kwargs) -> any:
+                """ Run repeating test """
+                self.start_process()
+                print(
+                    f"[{self.__process_number}] "
+                    f"Repeat for {self.__number_of_times} times..."
+                )
+
+                results = tuple(
+                    _func(*args, **kwargs)
+                    for _ in range(self.__number_of_times)
+                )
+
+                print(f"[{self.__process_number}] Success.")
+                self.end_process()
+                return results
+
+            return wrapper
+
     class Time(DecoratorSkeleton):
         """ Time tester """
 
@@ -94,11 +141,8 @@ class Test(DataClass):
             self.__target = _func
             return
 
-        def __repr__(self) -> str:
-            return f"TimeTester[{self.__target.__name__}]"
-
         def __call__(self, *args, **kwargs) -> any:
-            """ Run time test """
+            """ Run time test wrapper """
 
             """ run """
             start = time()
@@ -106,10 +150,28 @@ class Test(DataClass):
             end = time()
 
             """ result """
-            print(f"Run time of '{self.__target.__name__}': {end-start}")
+            print(f"Run time: {end-start}")
 
             return result
 
-
         ...
+
+    class BlankLine(DecoratorSkeleton):
+        """ Print BlankLine """
+
+        """ values """
+        __func: Callable = None
+
+        """ processes """
+        def __init__(self, _func: Callable) -> None:
+            """ Set target function """
+            self.__func = _func
+            return
+
+        def __call__(self, *args, **kwargs) -> any:
+            """ Add BlankLine wrapper """
+            result = self.__func(*args, **kwargs)
+            print()
+            return result
+
     ...

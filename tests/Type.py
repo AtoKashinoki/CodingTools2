@@ -1,6 +1,5 @@
 
 
-from time import time
 from CodingTools2.Type import *
 from CodingTools2.Decorator import Test
 
@@ -11,10 +10,12 @@ _list = [
 
 
 @Test.Time
+@Test.Repeat(10)
+@Test.BlankLine
+@Test.Time
+@Test.Repeat(100000)
 def test(_vector):
-    for i in range(100000):
-        _vector = _vector * _vector
-        ...
+    _vector = _vector * _vector
     return
 
 
