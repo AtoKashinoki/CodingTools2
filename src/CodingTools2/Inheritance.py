@@ -37,7 +37,7 @@ class DataClass(InheritanceSkeleton):
     """ DataClass base """
 
     """ values """
-    __value_types: set[type] = {str, int, float, bool, tuple, list, dict, set}
+    __value_types: set = {str, int, float, bool, tuple, list, dict, set}
     __protect_values: set[str] = {
         "__module__",
         "__main__",
@@ -47,7 +47,7 @@ class DataClass(InheritanceSkeleton):
 
     """ properties """
     @property
-    def value_types(self) -> set[type]: return self.__value_types
+    def value_types(self) -> set: return self.__value_types
 
     """ processes """
 
