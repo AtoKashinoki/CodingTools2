@@ -61,6 +61,10 @@ class DataClass(InheritanceSkeleton):
         self.__protect_values = DataClass.__protect_values
         return
 
+    def add_value_type(self, _type: type) -> 'DataClass':
+        self.__value_types.add(_type)
+        return self
+
     """ dictionary methods"""
     def __values(self) -> dict:
         """ Return validated attributes """
