@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
 
 from abc import ABC, abstractmethod
-from copy import deepcopy
+from copy import copy
 from typing import KeysView, ValuesView, ItemsView, Iterable
 from .Errors import Message
 
@@ -61,6 +61,9 @@ class DataClass(InheritanceSkeleton):
         self.__value_types = DataClass.__value_types
         self.__protect_values = DataClass.__protect_values
         return
+
+    def copy(self) -> 'DataClass':
+        return copy(self)
 
     def add_value_type(self, _type: type) -> 'DataClass':
         self.__value_types.add(_type)
