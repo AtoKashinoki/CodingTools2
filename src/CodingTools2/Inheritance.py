@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from typing import KeysView, ItemsView
+from typing import KeysView, ItemsView, Iterable
 from .Errors import Message
 
 
@@ -139,8 +139,8 @@ class DataClass(InheritanceSkeleton):
     def __len__(self) -> int:
         return len(self.__values())
 
-    def __iter__(self) -> iter:
-        return self.keys()
+    def __iter__(self) -> Iterable:
+        return iter(self.keys())
 
     """ operators """
 
