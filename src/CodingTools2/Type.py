@@ -386,7 +386,7 @@ class Vector1D(Vector):
     def __init__(
             self,
             _data:
-                tuple[int, int] or list[int, int] or tuple or list or 'Vector1D'
+                tuple[int, int] | list[int, int] | tuple | list | 'Vector1D'
                 = None,
             length: int = None,
             initial_value: int = 0,
