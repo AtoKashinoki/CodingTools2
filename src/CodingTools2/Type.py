@@ -17,7 +17,6 @@ if __name__ == '__main__':
 
 
 from typing import Callable
-from copy import deepcopy
 from .Errors import Message
 from .Functions import (
     Generate, Get,
@@ -77,7 +76,7 @@ class Vector(object):
             size = Get.list_size(_data)
             ...
 
-        self.__data = deepcopy(_data)
+        self.__data = list(_data)
         self.__size = size
         return
 
