@@ -3,9 +3,7 @@
 
 This file contain types for developing programs.
 """
-from turtledemo.forest import doit2
 
-from Tools.scripts.win_add2path import modify
 
 """ Prevent execution this file """
 
