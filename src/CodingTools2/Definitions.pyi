@@ -76,7 +76,7 @@ class Calculate(DefinitionsSkeleton):
     ge = lambda x, y: x >= y
     ...
 
-class Number(DecoratorSkeleton):
+class Number(DefinitionsSkeleton):
     INF: float
     ...
 
