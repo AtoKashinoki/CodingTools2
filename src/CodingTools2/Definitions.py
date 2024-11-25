@@ -138,6 +138,14 @@ class Calculate(DefinitionsSkeleton):
     ...
 
 
+""" Number """
+
+
+class Number(DefinitionsSkeleton):
+    INF = float('inf')
+    ...
+
+
 """ Index and Key """
 
 
