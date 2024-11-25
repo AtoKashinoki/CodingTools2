@@ -138,7 +138,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.mul)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.add,
         ))
@@ -158,7 +158,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.sub)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.sub,
         ))
@@ -178,7 +178,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.mul)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.mul,
         ))
@@ -198,7 +198,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.div)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.div,
         ))
@@ -218,7 +218,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.floor)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.floor,
         ))
@@ -238,7 +238,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.mod)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.mod,
         ))
@@ -260,7 +260,7 @@ class Vector(object):
     ) -> 'Vector':
         power = self.reform_cal_data(power)
         self.validate_calculator(power, Operator.pow)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, power,
             Calculate.pow,
         ))
@@ -287,7 +287,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.eq)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.eq,
         ))
@@ -297,7 +297,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.ne)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.ne,
         ))
@@ -307,7 +307,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.lt)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.lt,
         ))
@@ -317,7 +317,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.le)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.le,
         ))
@@ -327,7 +327,7 @@ class Vector(object):
     ) -> 'Vector':
         other = self.reform_cal_data(other)
         self.validate_calculator(other, Operator.gt)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.gt,
         ))
@@ -337,7 +337,7 @@ class Vector(object):
     ) -> 'Vector':
         self.reform_cal_data(other)
         self.validate_calculator(other, Operator.ge)
-        return Vector(self.calculate(
+        return self.__class__(self.calculate(
             self.__data, other,
             Calculate.ge,
         ))
@@ -406,72 +406,72 @@ class Vector1D(Vector):
 
     def __add__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d + other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 + d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __sub__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d - other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 - d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __mul__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d * other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 * d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __truediv__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d / other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 / d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __floordiv__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d // other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 // d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __mod__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d % other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 % d2
             for d1, d2 in zip(self.data, other)
         ])
@@ -480,12 +480,12 @@ class Vector1D(Vector):
             self, power: 'Vector' or int or float, modulo=None
     ) -> 'Vector1D':
         if Validate.number(power):
-            return Vector1D([
+            return self.__class__([
                 d ** power
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 ** d2
             for d1, d2 in zip(self.data, power)
         ])
@@ -494,72 +494,72 @@ class Vector1D(Vector):
 
     def __eq__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d == other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 == d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __ne__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d != other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 != d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __lt__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d < other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 < d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __le__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d <= other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 <= d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __gt__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d > other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 > d2
             for d1, d2 in zip(self.data, other)
         ])
 
     def __ge__(self, other: 'Vector1D' or int or float) -> 'Vector1D':
         if Validate.number(other):
-            return Vector1D([
+            return self.__class__([
                 d >= other
                 for d in self.data
             ])
 
-        return Vector1D([
+        return self.__class__([
             d1 >= d2
             for d1, d2 in zip(self.data, other)
         ])
