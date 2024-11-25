@@ -1,5 +1,7 @@
 
 from typing import Callable
+
+from .Decorator import DecoratorSkeleton
 from .Inheritance import DataClass
 
 
@@ -72,6 +74,10 @@ class Calculate(DefinitionsSkeleton):
     le = lambda x, y: x <= y
     gt = lambda x, y: x > y
     ge = lambda x, y: x >= y
+    ...
+
+class Number(DecoratorSkeleton):
+    INF: float
     ...
 
 class Index(DefinitionsSkeleton):
