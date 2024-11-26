@@ -8,6 +8,7 @@ class Message:
     ) -> str: ...
     args_empty: str
     different_size: str
+    can_not_call: str
     ...
 
 

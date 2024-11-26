@@ -46,6 +46,8 @@ class Message:
 
     different_size = "Cannot be calculated due to different sizes"
 
+    can_not_call = "Cannot be called."
+
     ...
 
 

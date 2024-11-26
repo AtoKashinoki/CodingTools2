@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "CodingTools"
-version = "2.7.19"
+version = "2.7.20"
 description = "This module contains tools that you can use for development."
 
 readme = "README.md"
